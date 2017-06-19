@@ -23,9 +23,9 @@ pipeline {
         )
       }
     }
-     stage('packaging stage') {
+    stage('packaging stage') {
       steps {
-          "systemTest": {
+          "package": {
             sh 'echo "packaging..."'
           }
       }
