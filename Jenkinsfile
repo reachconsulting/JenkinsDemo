@@ -1,38 +1,27 @@
 pipeline {
   agent any
   stages {
-    parallel(
-      stage('component1') {
-        steps {
+    stage('build1') {
+      steps {
+        parallel(
           "build1": {
             sh 'sh ./build1'
-          },
-          "unittest1": {
-            sh 'sh ./unittest2'
             
-          }
-        }
-      },
-      stage('component2') {
-        steps {
+          },
           "build2": {
             sh 'sh ./build2'
+            
           },
-          "unittest2": {
-            sh 'sh ./unittest2'
+          "build3": {
+            sh 'sh ./build3'
+            
+          },
+          "build4": {
+            sh 'sh ./build4'
             
           }
-        }
+        )
       }
-    )
-    stage('integration1') {
-        steps {
-          "integration1": {
-            sh 'sh ./integration1'
-          },
-        }
-      )
     }
-
   }
 }
