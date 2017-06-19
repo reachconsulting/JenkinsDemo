@@ -69,5 +69,16 @@ pipeline {
         sh 'sh ./systemTest'
       }
     }
+    stage('preprod (UAT)') {
+      steps {
+        sh 'echo "preProduction environment, UAT"'
+      }
+    }
+    stage('prod)') {
+      steps {
+        sh 'echo "in production!"'
+      }
+    }
+    
   }
 }
