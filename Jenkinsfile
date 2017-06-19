@@ -23,11 +23,9 @@ pipeline {
         )
       }
     }
-    stage('packaging stage') {
+    stage('Packaging stage') {
       steps {
-          "package": {
-            sh 'echo "packaging..."'
-          }
+        sh 'echo "packaging..."'
       }
     }   
     stage('UT stage') {
@@ -68,9 +66,7 @@ pipeline {
     }
     stage('systemTest stage') {
       steps {
-          "systemTest": {
-            sh 'sh ./systemTest'
-          }
+        sh 'sh ./systemTest'
       }
     }
   }
