@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('build1') {
+    stage('Build stage') {
       steps {
         parallel(
           "build1": {
@@ -21,6 +21,56 @@ pipeline {
             
           }
         )
+      }
+    }
+     stage('packaging stage') {
+      steps {
+          "systemTest": {
+            sh 'echo "packaging..."'
+          }
+      }
+    }   
+    stage('UT stage') {
+      steps {
+        parallel(
+          "unittest1": {
+            sh 'sh ./unittest1'
+            
+          },
+          "unittest2": {
+            sh 'sh ./unittest2'
+            
+          },
+          "unittest3": {
+            sh 'sh ./unittest3'
+            
+          },
+          "unittest4": {
+            sh 'sh ./unittest4'
+            
+          }
+        )
+      }
+    }
+    stage('Integration stage') {
+      steps {
+        parallel(
+          "integration1": {
+            sh 'sh ./integration1'
+            
+          },
+          "integration2": {
+            sh 'sh ./integration2'
+            
+          }
+        )
+      }
+    }
+    stage('systemTest stage') {
+      steps {
+          "systemTest": {
+            sh 'sh ./systemTest'
+          }
       }
     }
   }
