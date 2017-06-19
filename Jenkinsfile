@@ -3,7 +3,24 @@ pipeline {
   stages {
     stage('build1') {
       steps {
-        sh 'sh ./build1'
+        parallel(
+          "build1": {
+            sh 'sh ./build1'
+            
+          },
+          "build2": {
+            sh 'sh ./build2'
+            
+          },
+          "build3": {
+            sh 'sh ./build3'
+            
+          },
+          "build4": {
+            sh 'sh ./build4'
+            
+          }
+        )
       }
     }
   }
