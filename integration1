@@ -1,5 +1,5 @@
 #!/bin/sh
 sleep $(( ( RANDOM % 5 )  + 1 )) #simula
-echo "$0 DID NOT WORK!"
-#echo "$0 Worked!"
-exit 1
+#echo "$0 DID NOT WORK!"
+echo "$0 Worked!"
+exit 0
